@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: catalog_db
+    ports:
+      - "16432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=catalog_db
+  Redis:
+    image: redis:7-alpine
+    container_name: catalog_redis
+    ports:
+      - "6379:6379"
+  sonarqube:
+    image: sonarqube:lts-community
+    container_name: catalog_sonarqube
+    ports:
+      - "9001:9000"
