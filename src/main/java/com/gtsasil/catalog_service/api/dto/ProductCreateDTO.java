@@ -1,0 +1,17 @@
+package com.gtsasil.catalog_service.api.dto;
+
+import java.util.UUID;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+
+public record ProductCreateDTO(
+        @NotBlank String name,
+        String description,
+        @NotNull @Positive BigDecimal price,
+        @NotNull @PositiveOrZero Integer stockQuantity,
+        @NotNull UUID categoryId) {
+
+}
