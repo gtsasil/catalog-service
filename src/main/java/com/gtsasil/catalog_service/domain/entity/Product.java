@@ -1,8 +1,7 @@
-package com.gtsasil.catalog_service.domain;
+package com.gtsasil.catalog_service.domain.entity;
 
 import java.math.BigDecimal;
-
-import org.hibernate.validator.constraints.UUID;
+import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -14,7 +13,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "product")
+@Table(name = "tb_products")
 public class Product {
 
     @Id
@@ -29,6 +28,19 @@ public class Product {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
+
+    public Product() {
+    }
+
+    public Product(UUID id, String name, String description, BigDecimal price, Integer stockQuantity,
+            Category category) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+        this.category = category;
+    }
 
     public UUID getId() {
         return id;

@@ -1,9 +1,8 @@
-package com.gtsasil.catalog_service.domain;
+package com.gtsasil.catalog_service.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.hibernate.validator.constraints.UUID;
+import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -26,7 +25,16 @@ public class Category {
     private String description;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-    private List<Product> produts = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
+
+    public Category() {
+    }
+
+    public Category(UUID id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
 
     public UUID getId() {
         return id;
@@ -52,12 +60,12 @@ public class Category {
         this.description = description;
     }
 
-    public List<Product> getProduts() {
-        return produts;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setProduts(List<Product> produts) {
-        this.produts = produts;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
 }
